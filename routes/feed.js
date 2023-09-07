@@ -10,11 +10,24 @@ router.get("/posts", feedController.getPosts);
 router.post(
   "/post",
   [
-    body("title").trim().isLength({ min: 7 }), //edit here to simulate error , please insert length < 7 on title on front end
+    body("title").trim().isLength({ min: 5 }),
     body("content").trim().isLength({ min: 5 }),
   ],
   feedController.createPost
 );
 
-router.get("/post/:postId",feedController.getPost);
+router.get("/post/:postId", feedController.getPost);
+
+//updating/editing a post use put
+router.put(
+  "/post/:postId",
+  [
+    body("title").trim().isLength({ min: 5 }),
+    body("content").trim().isLength({ min: 5 }),
+  ],
+  feedController.updatePost
+);
+
+router.delete('/post/:postId',feedController.deletePost)
+
 module.exports = router;
