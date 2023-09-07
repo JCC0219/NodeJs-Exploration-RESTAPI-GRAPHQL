@@ -55,8 +55,6 @@ class Feed extends Component {
         if (res.status !== 200) {
           throw new Error("Failed to fetch posts.");
         }
-        console.log(res);
-
         return res.json();
       })
       .then((resData) => {
