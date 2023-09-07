@@ -10,7 +10,7 @@ router.get("/posts", feedController.getPosts);
 router.post(
   "/post",
   [
-    body("title").trim().isLength({ min: 5 }),
+    body("title").trim().isLength({ min: 7 }), //edit here to simulate error , please insert length < 7 on title on front end
     body("content").trim().isLength({ min: 5 }),
   ],
   feedController.createPost
