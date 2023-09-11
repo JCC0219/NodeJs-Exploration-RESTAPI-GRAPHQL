@@ -414,8 +414,8 @@ const io = require("socket.io")(server, {
 io.on("connection", (socket) => {
   console.log("client connected");
 });
-
 ```
+
 ```js
 //in socket.js
 //..
@@ -431,7 +431,6 @@ const io = require("socket.io")(server, {
 io.on("connection", (socket) => {
   console.log("client connected");
 });
-
 ```
 
 3. Example of applying web socket, emmiting request to all client
@@ -440,10 +439,10 @@ io.on("connection", (socket) => {
 io.emit("posts", { action: "update", post: result });
 ```
 
-
 #### frontend
 
 1. install client socket.io
+
 ```bash
 npm install --save socket.io-client
 
@@ -470,4 +469,13 @@ socket.on("posts", (data) => {
     this.loadPosts();
   }
 });
+```
+
+## GraphQL
+
+See the [official documentation](https://graphql.org/)
+
+```bash
+npm install --save graphql express-graphql
+
 ```
