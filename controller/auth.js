@@ -23,10 +23,10 @@ exports.signup = async (req, res, next) => {
       password: hashedPw,
       name: name,
     });
-    await user.save();
+    const result = await user.save();
 
     res.status(201).json({ message: "User Created!", userId: result._id });
-  } catch (er) {
+  } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;
     }
