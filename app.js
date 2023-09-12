@@ -8,8 +8,7 @@ const { graphqlHTTP } = require("express-graphql");
 
 const graphqlSchema = require("./graphql/schema");
 const graphqlResolver = require("./graphql/resolvers");
-
-//routes
+const auth = require("./middleware/auth");
 
 //middleware application
 const app = express();
@@ -50,13 +49,14 @@ app.use((req, res, next) => {
   );
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
-
   //express graphql automatically decline everything from GET or POST, hence we need to accecpt OPTION reqest here
   if (req.method === "OPTIONS") {
     return res.sendStatus(200);
   }
   next();
 });
+
+app.use(auth);
 
 app.use(
   "/graphql",
